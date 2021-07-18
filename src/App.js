@@ -1,10 +1,22 @@
-import "./styles.css";
-
-export default function App() {
+import React, { useState } from 'react';
+import data from './data';
+import SingleQuestion from './Question';
+function App() {
+  const [questions, setQuestions] = useState(data);
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+    <main>
+      <div className='container'>
+        <h3>questions and answers about login</h3>
+        <section className='info'>
+          {questions.map((question) => {
+            return (
+              <SingleQuestion key={question.id} {...question}></SingleQuestion>
+            );
+          })}
+        </section>
+      </div>
+    </main>
   );
 }
+
+export default App;
